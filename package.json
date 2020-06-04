@@ -1,6 +1,6 @@
 {
   "name": "@3fv/type-enum-events",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "typings": "dist/index.d.ts",
   "main": "dist/index.js",
   "files": [
