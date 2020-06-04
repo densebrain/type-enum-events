@@ -1,6 +1,6 @@
 
 import {EventEmitter} from 'events'
-import { isNumber } from "typeguard"
+import { isNumber } from "@3fv/guard"
 
 import {enumKeys} from "./EnumUtil"
 
@@ -51,7 +51,7 @@ export class EnumEventEmitter<E> {
 		(...args:any[]) => listener(event,...args)
 	
 	
-	private makeRemover = (event:E,wrappedListener:Function) =>
+	private makeRemover = (event:E,wrappedListener:IEnumEventHandler<E>) =>
 		() => this.removeListener(event,wrappedListener)
 	
 	
@@ -75,11 +75,11 @@ export class EnumEventEmitter<E> {
 	}
 	
 	
-	off(event: E, listener: Function): this {
+	off(event: E, listener: EnumEventEmitter.Handler<E>): this {
 		return this.removeListener(event,listener)
 	}
 	
-	removeListener(event: E, listener: Function): this {
+	removeListener(event: E, listener: EnumEventEmitter.Handler<E>): this {
 		this.emitter.removeListener(this.eventName(event), listener)
 		return this
 	}
@@ -89,8 +89,8 @@ export class EnumEventEmitter<E> {
 		return this
 	}
 	
-	listeners(event: E): Function[] {
-		return this.emitter.listeners(this.eventName(event))
+	listeners(event: E): Array<EnumEventEmitter.Handler<E>> {
+		return this.emitter.listeners(this.eventName(event)) as any
 	}
 	
 	/**
@@ -167,3 +167,6 @@ export class EnumEventEmitter<E> {
 
 }
 
+export namespace EnumEventEmitter {
+    export type Handler<T> = IEnumEventHandler<T>
+}
