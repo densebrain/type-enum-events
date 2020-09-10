@@ -47,7 +47,7 @@
     "@3fv/logger-proxy": "^1.0.1"
   },
   "dependencies": {
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.19",
     "@3fv/guard": "^1.4.13"
   },
   "publishConfig": {
