@@ -1,12 +1,13 @@
 
 import {EventEmitter} from 'events'
-import { isNumber } from "@3fv/guard"
 
 import {enumKeys} from "./EnumUtil"
 
-export interface IEnumEventHandler<E> {
-	(event:E,...args:any[]):void
+export interface IEnumEventHandler<E extends object, K extends keyof E, V extends E[K]> {
+	<EventKey extends K>(event:EventKey,data:E[EventKey]):any
 }
+
+export type WrappedEventHandler<Handler extends IEnumEventHandler<any, any, any>> = Handler extends  IEnumEventHandler<infer E, infer K, infer V> ? ((data: V) => ReturnType<Handler>) : never
 
 /**
  * Returned from 'on' to unsubscribe
@@ -18,7 +19,7 @@ export interface IEnumEventRemover {
 /**
  * Enum based EventEmitter
  */
-export class EnumEventEmitter<E> {
+export class EnumEventEmitter<E extends object, K extends keyof E = keyof E, V extends E[K] = E[K]> {
 
 	/**
 	 * Internal reference to Node EventEmitter
@@ -26,15 +27,15 @@ export class EnumEventEmitter<E> {
 	 */
 	private emitter = new EventEmitter()
 	
-	private enumConstants
+	//private enumConstants: Array<Exclude<K, number>>
 	
 	/**
 	 * Create a new emitter
 	 *
 	 * @param enumValues
 	 */
-	constructor(private enumValues:any) {
-		this.enumConstants = Object.keys(enumValues).filter(it => isNumber(it))
+	constructor() {
+		//this.enumConstants = Object.keys(enumValues).filter(it => isNumber(it))
 	}
 	
 		
@@ -45,52 +46,52 @@ export class EnumEventEmitter<E> {
 	 *
 	 * @param event
 	 */
-	private eventName = (event:E):string => this.enumValues[event as any]
+	//private eventName = (event:K):string => this.enumValues[event as any]
 	
-	private makeListener = (event:E,listener:IEnumEventHandler<E>) =>
-		(...args:any[]) => listener(event,...args)
+	private makeListener = <EventKey extends K>(event:EventKey,listener:IEnumEventHandler<E,EventKey,E[EventKey]>) =>
+		(data: E[EventKey]) => listener(event, data)
 	
 	
-	private makeRemover = (event:E,wrappedListener:IEnumEventHandler<E>) =>
+	private makeRemover = <EventKey extends K>(event:EventKey,wrappedListener:WrappedEventHandler<IEnumEventHandler<E,EventKey,E[EventKey]>>) =>
 		() => this.removeListener(event,wrappedListener)
 	
 	
-	onAll(listener:IEnumEventHandler<E>):IEnumEventRemover[] {
-			return this.addAllListener(listener)
-	}
+	// onAll(listener:IEnumEventHandler<E,K,V>):IEnumEventRemover[] {
+	// 		return this.addAllListener(listener)
+	// }
+	//
+	// addAllListener(listener:IEnumEventHandler<E,K,V>):IEnumEventRemover[] {
+	// 	return enumKeys(this.enumValues).map((event:any) => {
+	// 			return this.addListener(event,listener)
+	// 		})
+	// }
 	
-	addAllListener(listener:IEnumEventHandler<E>):IEnumEventRemover[] {
-		return enumKeys(this.enumValues).map((event:any) => {
-				return this.addListener(event,listener)
-			})
-	}
 	
-	
-	addListener(event: E,listener:IEnumEventHandler<E>): IEnumEventRemover {
+	addListener<EventKey extends K>(event: EventKey,listener:IEnumEventHandler<E,EventKey,E[EventKey]>): IEnumEventRemover {
 		return this.on(event,listener)
 	}
 	
-	once(event: E,listener:IEnumEventHandler<E>): IEnumEventRemover {
+	once<EventKey extends K>(event: EventKey,listener:IEnumEventHandler<E,EventKey,E[EventKey]>): IEnumEventRemover {
 		return this.on(event,listener,true)
 	}
 	
 	
-	off(event: E, listener: EnumEventEmitter.Handler<E>): this {
+	off<EventKey extends K>(event: EventKey,listener:WrappedEventHandler<IEnumEventHandler<E,EventKey,E[EventKey]>>): this {
 		return this.removeListener(event,listener)
 	}
 	
-	removeListener(event: E, listener: EnumEventEmitter.Handler<E>): this {
-		this.emitter.removeListener(this.eventName(event), listener)
+	removeListener<EventKey extends K>(event: EventKey,listener:WrappedEventHandler<IEnumEventHandler<E,EventKey,E[EventKey]>>): this {
+		this.emitter.removeListener(event as any, listener)
 		return this
 	}
 	
-	removeAllListeners(event?: E): this {
-		this.emitter.removeAllListeners(this.eventName(event))
+	removeAllListeners<EventKey extends K>(event: EventKey): this {
+		this.emitter.removeAllListeners(event as any)
 		return this
 	}
 	
-	listeners(event: E): Array<EnumEventEmitter.Handler<E>> {
-		return this.emitter.listeners(this.eventName(event)) as any
+	listeners<EventKey extends K>(event: EventKey): Array<EnumEventEmitter.Handler<E,EventKey,E[EventKey]>> {
+		return this.emitter.listeners(event as any) as any
 	}
 	
 	/**
@@ -141,13 +142,13 @@ export class EnumEventEmitter<E> {
 	 * @param once
 	 * @returns {IEnumEventRemover}
 	 */
-	on(event:E,listener:IEnumEventHandler<E>,once = false):IEnumEventRemover {
+	on<EventKey extends K>(event:EventKey,listener:IEnumEventHandler<E,EventKey,E[EventKey]>,once = false):IEnumEventRemover {
 		const
-			eventName = this.eventName(event),
+			//eventName = this.eventName(event),
 			wrappedListener = this.makeListener(event,listener),
 			remover = this.makeRemover(event,wrappedListener)
 		
-		this.emitter[once ? 'once' : 'on'].apply(this.emitter,[eventName,wrappedListener])
+		this.emitter[once ? 'once' : 'on'].apply(this.emitter,[event as any,wrappedListener])
 
 		return remover
 	}
@@ -159,14 +160,14 @@ export class EnumEventEmitter<E> {
 	 * Emit an event
 	 *
 	 * @param event
-	 * @param args
+	 * @param data
 	 */
-	emit(event:E,...args:any[]) {
-		this.emitter.emit(this.eventName(event),...args)
+	emit<EventKey extends K>(event:EventKey,data:E[EventKey]) {
+		this.emitter.emit(event as any,data)
 	}
 
 }
 
 export namespace EnumEventEmitter {
-    export type Handler<T> = IEnumEventHandler<T>
+    export type Handler<E extends object, K extends keyof E, V extends E[K]> = IEnumEventHandler<E,K,V>
 }

@@ -2,14 +2,22 @@
 import 'jest'
 import {EnumEventEmitter} from "../EnumEventEmitter"
 
-enum SampleEnum {
-  val1,
-  val2
-}
+// enum SampleEnum {
+//   val1,
+//   val2
+// }
 
+type SampleEnum = {
+  val1: {
+    type: "val1"
+  }
+  val2: {
+    type: "val2"
+  }
+}
 class SampleEnumEmitter extends EnumEventEmitter<SampleEnum> {
   constructor() {
-    super(SampleEnum)
+    super()
   }
   
 }
@@ -19,12 +27,15 @@ test('Enum event emit',() => {
     const
       emitter = new SampleEnumEmitter()
     
-    emitter.on(SampleEnum.val2,(type:SampleEnum,arg) => {
-      expect(arg).toBe('test')
+    emitter.on("val2",(type,data) => {
+      expect(type).toBe('val2')
+      expect(data.type).toBe('val2')
       resolve()
     })
     
     
-    emitter.emit(SampleEnum.val2,'test')
+    emitter.emit("val2",{
+      type: "val2"
+    })
   })
 })
