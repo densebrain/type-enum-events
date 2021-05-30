@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@3fv/guard@1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.0.16.tgz#fc711f5ac16b1fec2fb745a5adb22cd8ae1ac4b3"
-  integrity sha512-9dCHsLWuOu74XmDT88xd9rOhpSTG85d5QIbYiZGjAJOm0gCVsv0SZxr8TvKZOukVWA+KG38wftYqbDY8KQC0EQ==
-  dependencies:
-    lodash "^4.17.15"
-
 "@3fv/guard@^1.0.15":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.0.18.tgz#de34a09f9ca60253243f16cfa03988677c7819ed"
   integrity sha512-1KRNVz3QK2AOlx4Q50IJP/EPmK6Y+gWDi8qkl9ZlCHCt0NSlDfNvtCwzTnexyjKjUyqpERyTyryFymVtideSXQ==
+  dependencies:
+    lodash "^4.17.15"
+
+"@3fv/guard@^1.4.13":
+  version "1.4.25"
+  resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.4.25.tgz#bbc69dfcf1cf1a52da56b44e260c8eab5749be3b"
+  integrity sha512-fnvBtsqciBeWNhFOFENKGvNbxq0rQGKaGukew6yjbh2T1gspc8FVm4k024/8k6CwK+jldxkoE5SaSaI6ndCP2A==
   dependencies:
     lodash "^4.17.15"
 
@@ -3399,6 +3399,11 @@ lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
+lodash@^4.17.20:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 make-dir@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
@@ -5381,9 +5386,9 @@ write@1.0.3:
     mkdirp "^0.5.1"
 
 ws@^7.2.3:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.0.tgz#4b2f7f219b3d3737bc1a2fbf145d825b94d38ffd"
-  integrity sha512-iFtXzngZVXPGgpTlP1rBqsUK82p9tKqsWRPg5L56egiljujJT3vGAYnHANvFxBieXrTFavhzhxW52jnaWV+w2w==
+  version "7.4.6"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
+  integrity sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
