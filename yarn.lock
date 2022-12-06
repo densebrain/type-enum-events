@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@3fv/guard@1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.0.16.tgz#fc711f5ac16b1fec2fb745a5adb22cd8ae1ac4b3"
-  integrity sha512-9dCHsLWuOu74XmDT88xd9rOhpSTG85d5QIbYiZGjAJOm0gCVsv0SZxr8TvKZOukVWA+KG38wftYqbDY8KQC0EQ==
-  dependencies:
-    lodash "^4.17.15"
-
 "@3fv/guard@^1.0.15":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.0.18.tgz#de34a09f9ca60253243f16cfa03988677c7819ed"
   integrity sha512-1KRNVz3QK2AOlx4Q50IJP/EPmK6Y+gWDi8qkl9ZlCHCt0NSlDfNvtCwzTnexyjKjUyqpERyTyryFymVtideSXQ==
+  dependencies:
+    lodash "^4.17.15"
+
+"@3fv/guard@^1.4.13":
+  version "1.4.35"
+  resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.4.35.tgz#bc7dda8b8ff75e70e1f8e8da250b306a2369d74a"
+  integrity sha512-tDo1aKawqW1sT6fyMp4+m7cTYtISZ4r2YOz4Az2/F/EteSZvhB6vUCsEF8feM+NTpAPF4nrsCmlQrrAmKfkiPw==
   dependencies:
     lodash "^4.17.15"
 
@@ -1454,9 +1454,9 @@ decimal.js@^10.2.0:
   integrity sha512-vDPw+rDgn3bZe1+F/pyEwb1oMG2XTlRVgAa6B4KccTEpYgF8w6eQllVbQcfIJnZyvzFtFpxnpGtx8dd7DJp/Rw==
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 deep-is@^0.1.3, deep-is@~0.1.3:
   version "0.1.3"
@@ -3398,6 +3398,11 @@ lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+lodash@^4.17.20:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 make-dir@^3.0.0:
   version "3.1.0"
