@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@3fv/guard@1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.0.16.tgz#fc711f5ac16b1fec2fb745a5adb22cd8ae1ac4b3"
-  integrity sha512-9dCHsLWuOu74XmDT88xd9rOhpSTG85d5QIbYiZGjAJOm0gCVsv0SZxr8TvKZOukVWA+KG38wftYqbDY8KQC0EQ==
-  dependencies:
-    lodash "^4.17.15"
-
 "@3fv/guard@^1.0.15":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.0.18.tgz#de34a09f9ca60253243f16cfa03988677c7819ed"
   integrity sha512-1KRNVz3QK2AOlx4Q50IJP/EPmK6Y+gWDi8qkl9ZlCHCt0NSlDfNvtCwzTnexyjKjUyqpERyTyryFymVtideSXQ==
+  dependencies:
+    lodash "^4.17.15"
+
+"@3fv/guard@^1.4.13":
+  version "1.4.35"
+  resolved "https://registry.yarnpkg.com/@3fv/guard/-/guard-1.4.35.tgz#bc7dda8b8ff75e70e1f8e8da250b306a2369d74a"
+  integrity sha512-tDo1aKawqW1sT6fyMp4+m7cTYtISZ4r2YOz4Az2/F/EteSZvhB6vUCsEF8feM+NTpAPF4nrsCmlQrrAmKfkiPw==
   dependencies:
     lodash "^4.17.15"
 
@@ -3399,6 +3399,11 @@ lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
+lodash@^4.17.20:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 make-dir@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
@@ -4085,9 +4090,9 @@ punycode@^2.1.0, punycode@^2.1.1:
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
+  integrity sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==
 
 react-is@^16.12.0:
   version "16.13.1"
